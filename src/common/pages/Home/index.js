@@ -1,20 +1,24 @@
 import React, { Component } from "react";
+import { connect } from 'react-redux';
+import { increment, decrement } from "../../actions";
 
 class Home extends Component {
-
-  exampleMethod() {
-    console.log("something");
-  }
 
   render() {
     return(
       <div className="page">
         <h1>Hellö Wörld!</h1>
         <p>Home, Lorem ipsum dolor sit amet.</p>
-        <button onClick={ () => this.exampleMethod() }>Console log something</button>
+        <h2>{ this.props.counter }</h2>
+        <button onClick={ () => this.props.increment() }>+</button>
+        <button onClick={ () => this.props.decrement() }>-</button>
       </div>
     )
   }
 }
 
-export default Home;
+const mapStateToProps = (state, ownProps) => ({
+    counter: state.counter
+});
+
+export default connect(mapStateToProps, { increment, decrement })(Home);

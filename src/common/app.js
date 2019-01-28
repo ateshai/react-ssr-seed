@@ -11,6 +11,7 @@ class App extends Component {
 
   render() {
     const { location } = this.props;
+    
     let title = "Server Side Rendered React";
     if(location && location.pathname === "/") {
       title = "Home page"

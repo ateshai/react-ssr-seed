@@ -3,8 +3,11 @@ import express from "express";
 import React from "react";
 import ReactDOMServer from "react-dom/server";
 import { StaticRouter } from "react-router";
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
 import bodyParser from "body-parser";
 import { Helmet } from "react-helmet";
+import reducers from "../common/reducers";
 
 const app = express();
 const PORT = process.env.PORT || 3008;
@@ -17,14 +20,15 @@ import App from "../common/app";
 app.get("*", (req, res) => {
 
   const context = {};
+  const store = createStore(reducers);
 
   const content = ReactDOMServer.renderToString(
-    <StaticRouter location={req.url} context={context} >
-      <App />
-    </StaticRouter>
+    <Provider store={ store }>
+      <StaticRouter location={req.url} context={context} >
+        <App />
+      </StaticRouter>
+    </Provider>
   );
-
-  // const helmet = Helmet.renderStatic();
 
   const html = `
     <html>
