@@ -2,12 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Route } from "react-router-dom";
 import { Provider } from "react-redux";
-import { createStore } from "redux";
+import configureStore from "../common/store/configureStore";
 
 import reducers from "../common/reducers";
 import App from "../common/app";
 
-const store = createStore(reducers);
+const preloadedState = window.__PRELOADED_STATE__;
+const store = configureStore(preloadedState);
 
 ReactDOM.hydrate(
   <Provider store={ store }>

@@ -1,12 +1,15 @@
 import "babel-polyfill";
 import express from "express";
+import bodyParser from "body-parser";
+
 import React from "react";
 import ReactDOMServer from "react-dom/server";
 import { StaticRouter } from "react-router";
-import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import bodyParser from "body-parser";
 import { Helmet } from "react-helmet";
+import configureStore from "../common/store/configureStore";
+
+import App from "../common/app";
 import reducers from "../common/reducers";
 
 const app = express();
@@ -15,12 +18,11 @@ const PORT = process.env.PORT || 3008;
 app.use(bodyParser.json());
 app.use(express.static("build/public"));
 
-import App from "../common/app";
-
 app.get("*", (req, res) => {
-
   const context = {};
-  const store = createStore(reducers);
+
+  const preloadedState = { counter: 6 };
+  const store = configureStore(preloadedState);
 
   const content = ReactDOMServer.renderToString(
     <Provider store={ store }>
@@ -38,6 +40,9 @@ app.get("*", (req, res) => {
           ${content}
         </div>
 
+        <script>
+          window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\x3c')}
+        </script>
         <script src="client_bundle.js"></script>
       </body>
     </html>

@@ -6,12 +6,11 @@ import Home from "./pages/Home";
 class App extends Component {
   constructor (props, context) {
     super(props, context);
-
   }
 
   render() {
     const { location } = this.props;
-    
+
     let title = "Server Side Rendered React";
     if(location && location.pathname === "/") {
       title = "Home page"
