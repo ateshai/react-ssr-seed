@@ -1,18 +1,23 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-import { increment, decrement } from "../../actions";
+import { increment, decrement, set } from "../../actions";
 
 class Home extends Component {
 
-onIncrement () {
-  console.log("increment method");
-  this.props.increment()
-}
+  // componentWillMount() {
+  //   // console.log("home props", this.props);
+  //   this.props.set(this.props.match.params.initial);
+  // }
 
-onDecrement () {
-  console.log("decrement method");
-  this.props.decrement()
-}
+  onIncrement () {
+    console.log("increment method");
+    this.props.increment()
+  }
+
+  onDecrement () {
+    console.log("decrement method");
+    this.props.decrement()
+  }
 
   render() {
     return(
@@ -33,7 +38,16 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = {
     increment,
-    decrement
+    decrement,
+    set
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export const loadData = (store, params) => {
+  return store.dispatch(set(params.initial));
+}
+
+
+export default {
+  component: connect(mapStateToProps, mapDispatchToProps)(Home),
+  loadData
+};

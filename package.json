@@ -28,8 +28,10 @@
     "react-helmet": "^5.2.0",
     "react-redux": "^6.0.0",
     "react-router": "^4.3.1",
+    "react-router-config": "^4.4.0-beta.6",
     "react-router-dom": "^4.3.1",
     "redux": "^4.0.1",
+    "serialize-javascript": "^1.6.1",
     "webpack": "^4.29.0",
     "webpack-cli": "^3.2.1",
     "webpack-node-externals": "^1.7.2"

@@ -1,7 +1,9 @@
 import React, { Component } from "react";
-import { Switch, Route } from "react-router";
 import { Helmet } from "react-helmet";
-import Home from "./pages/Home";
+
+import { renderRoutes } from "react-router-config";
+import routes from "./routes";
+
 
 class App extends Component {
   constructor (props, context) {
@@ -33,11 +35,7 @@ class App extends Component {
     return(
       <div className="app">
         <Helmet title={ title } meta={ metatags } />
-        <Switch>
-          <Route path="/" render={props => (
-            <Home {...props} />
-          )} />
-        </Switch>
+        <div>{ renderRoutes(routes) }</div>
       </div>
     )
   }
