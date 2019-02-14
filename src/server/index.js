@@ -11,7 +11,7 @@ const app = express();
 const PORT = process.env.PORT || 3008;
 
 app.use(bodyParser.json());
-app.use(express.static("build/public"));
+app.use(express.static(__dirname + "/build/public"));
 
 app.get("*", (req, res) => {
 
