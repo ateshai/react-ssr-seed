@@ -4,18 +4,13 @@ import { increment, decrement, set } from "../../actions";
 
 class Home extends Component {
 
-  // componentWillMount() {
-  //   // console.log("home props", this.props);
-  //   this.props.set(this.props.match.params.initial);
-  // }
-
   onIncrement () {
-    console.log("increment method");
+    // console.log("increment method");
     this.props.increment()
   }
 
   onDecrement () {
-    console.log("decrement method");
+    // console.log("decrement method");
     this.props.decrement()
   }
 

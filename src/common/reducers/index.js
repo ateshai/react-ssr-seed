@@ -8,7 +8,7 @@ const counter = (state = 0, action) => {
     case DECREMENT_COUNTER:
       return state - 1;
     case SET_COUNTER:
-      return state = action.value;
+      return state = Number(action.value);
     default:
       return state;
   }
