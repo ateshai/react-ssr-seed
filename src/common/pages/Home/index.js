@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { increment, decrement, set } from "../../actions";
+import Header from "../../components/Header";
 
 class Home extends Component {
 
@@ -16,7 +17,8 @@ class Home extends Component {
 
   render() {
     return(
-      <div className="page">
+      <div className="page home">
+        <Header />
         <h1>Hellö Wörld!</h1>
         <p>Home, Lorem ipsum dolor sit amet.</p>
         <h2>{ this.props.counter }</h2>
@@ -38,7 +40,10 @@ const mapDispatchToProps = {
 };
 
 export const loadData = (store, params) => {
-  return store.dispatch(set(params.initial));
+  const initial = Number(params.initial);
+  if(!isNaN(initial)) {
+    return store.dispatch(set(initial));
+  }
 }
 
 

@@ -11,15 +11,15 @@ const app = express();
 const PORT = process.env.PORT || 3008;
 
 app.use(bodyParser.json());
-app.use(express.static(__dirname + "/build/public"));
+app.use(express.static("build/public"));
 
 app.get("*", (req, res) => {
 
   // const preloadedState = { counter: 6 };
   const store = configureStore();
 
-
   const promises = matchRoutes(routes, req.path).map( ({route, match}) => {
+    // console.log(match.params)
     return route.loadData ? route.loadData(store, match.params) : null;
   });
 

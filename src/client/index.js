@@ -2,9 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Route } from "react-router-dom";
 import { Provider } from "react-redux";
-import configureStore from "../common/store/configureStore";
 
-import reducers from "../common/reducers";
+import configureStore from "../common/store/configureStore";
 import App from "../common/app";
 
 const preloadedState = window.__PRELOADED_STATE__;

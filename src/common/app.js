@@ -35,7 +35,7 @@ class App extends Component {
     return(
       <div className="app">
         <Helmet title={ title } meta={ metatags } />
-        <div>{ renderRoutes(routes) }</div>
+        { renderRoutes(routes) }
       </div>
     )
   }
