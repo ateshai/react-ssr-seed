@@ -9,7 +9,7 @@
     "webpack:start": "nodemon --watch build --exec node ./build/bundle.js",
     "dev": "npm-run-all -p webpack:*",
     "build": "webpack --config webpack.client.js && webpack --config webpack.server.js",
-    "start": "node ./build/bundle.js"
+    "start": "node build/bundle.js"
   },
   "author": "",
   "license": "ISC",

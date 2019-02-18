@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-import { increment, decrement, set } from "../../actions";
+import { increment, decrement, set } from "../../store/actions";
 import Header from "../../components/Header";
 
 class Home extends Component {
