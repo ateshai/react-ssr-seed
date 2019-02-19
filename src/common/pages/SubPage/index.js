@@ -10,4 +10,4 @@ const SubPage = () => {
   )
 };
 
-export default {component: SubPage};
+export default SubPage;

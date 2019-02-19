@@ -30,7 +30,8 @@ export default (req, store) => {
         <script>
           window.__PRELOADED_STATE__ = ${serialize(store.getState())}
         </script>
-        <script src="client_bundle.js"></script>
+        <script src="vendor.js"></script>
+        <script src="bundle.js"></script>
       </body>
     </html>
   `;

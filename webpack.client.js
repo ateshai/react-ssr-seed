@@ -1,13 +1,27 @@
 const path = require("path");
 
 module.exports = {
-  target: "node",
-  entry: "./src/client/index.js",
+  target: "web",
+  // entry: "./src/client/index.js",
+  entry: {
+    bundle: "./src/client/index.js"
+  },
   mode: "development",
   output: {
-    filename: "client_bundle.js",
-    path: path.resolve(__dirname, "build/public"),
-    publicPath: "/build/public"
+    filename: "[name].js",
+    path: path.resolve(__dirname, "build/public")
+  },
+  optimization: {
+    splitChunks: {
+      name: true,
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: "vendor",
+          chunks: "all"
+        }
+      }
+    }
   },
   module: {
     rules: [
@@ -16,13 +30,7 @@ module.exports = {
         loader: "babel-loader",
         exclude: "/node_modules/",
         options: {
-          presets: [
-            "react",
-            "stage-0",
-            ["env", {
-              target: { browsers: ["last 2 versions"]}
-            }]
-          ]
+          plugins: ['syntax-dynamic-import']
         }
       }
     ]
