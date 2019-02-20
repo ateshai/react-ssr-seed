@@ -15,13 +15,11 @@ module.exports = {
       {
         test: /\.js$/,
         loader: "babel-loader",
-        exclude: "/node_modules/",
-        options: {
-          plugins: [
-            "dynamic-import-node"
-          ]
-    
-        }
+        exclude: "/node_modules/"
+      },
+      {
+        test: /\.css$/,
+        use: [ "style-loader", "css-loader" ]
       }
     ]
   },
