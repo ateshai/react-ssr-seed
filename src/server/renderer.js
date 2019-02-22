@@ -21,7 +21,9 @@ export default (req, store) => {
 
   return `
     <html>
-      <head></head>
+      <head>
+        <link rel="stylesheet" href="bundle.css"> 
+      </head>
       <body>
         <div id="root">
           ${content}

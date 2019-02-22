@@ -1,0 +1,12 @@
+@import "../../styles/global.scss";
+
+.page {
+  &.sub {
+    background: #ccc;
+
+    .subPageBtn {
+      @extend .button;
+      color: #000;
+    }
+  }
+}

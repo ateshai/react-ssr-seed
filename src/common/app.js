@@ -4,6 +4,8 @@ import { Helmet } from "react-helmet";
 import { renderRoutes } from "react-router-config";
 import routes from "./routes";
 
+import "./styles/global.scss";
+
 class App extends Component {
   constructor (props, context) {
     super(props, context);
