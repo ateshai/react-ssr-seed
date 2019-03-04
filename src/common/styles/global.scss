@@ -1,6 +1,20 @@
+body {
+  font-size:13px;
+}
+
 .button {
   background:#c00;
   color: #fff;
   padding: 5px 10px;
   border:none;
 }
+
+.button2 {
+  background:#00c;
+  color: #fff;
+  padding: 5px 10px;
+  border:none;
+}
+
+@import "./header.scss";
+@import "./subpage.scss"

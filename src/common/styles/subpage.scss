@@ -1,10 +1,8 @@
-@import "../../styles/global.scss";
-
 .page {
   &.sub {
     background: #ccc;
 
-    .subPageBtn {
+    .subPageBtn { 
       @extend .button;
       color: #000;
     }
