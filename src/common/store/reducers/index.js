@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import {INCREMENT_COUNTER, DECREMENT_COUNTER, SET_COUNTER} from "../actions";
+import {INCREMENT_COUNTER, DECREMENT_COUNTER, SET_COUNTER, FETCH_USERS} from "../actions";
 
 const counter = (state = 0, action) => {
   switch (action.type) {
@@ -12,8 +12,18 @@ const counter = (state = 0, action) => {
     default:
       return state;
   }
-}
+};
+
+const users = (state = [], action) => {
+  switch (action.type) {
+    case FETCH_USERS:
+      return action.payload;
+    default:
+      return state;
+  };
+};
 
 export default combineReducers({
-  counter
+  counter,
+  users
 });

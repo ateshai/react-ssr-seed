@@ -1,6 +1,6 @@
 import React from "react";
 import Home from "../pages/Home";
-// import SubPage from "../pages/SubPage";
+import { loadData as subPageLoadData } from "../pages/SubPage";
 import Loadable from 'react-loadable';
 
 const loading = () => {
@@ -17,6 +17,7 @@ const SubPage = Loadable({
 export default [,
   {
     component: SubPage,
+    loadData: subPageLoadData,
     path: "/subpage",
     exact: true
   },
