@@ -252,7 +252,6 @@ app.get("/api/users", async (req, res) => {
 });
 
 app.get("*", (req, res) => {
-
   console.log("app get", req.path);
   // const preloadedState = { counter: 6 };
   const store = configureStore();

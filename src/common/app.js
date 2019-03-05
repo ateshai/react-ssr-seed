@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { Helmet } from "react-helmet";
-
 import { renderRoutes } from "react-router-config";
-import routes from "./routes";
 
 import "./styles/style.scss";
 
@@ -12,7 +10,7 @@ class App extends Component {
   }
 
   render() {
-    const { location } = this.props;
+    const { location, route } = this.props;
 
     let title = "Server Side Rendered React";
     if(location && location.pathname === "/") {
@@ -36,7 +34,7 @@ class App extends Component {
     return(
       <div className="app">
         <Helmet title={ title } meta={ metatags } />
-        { renderRoutes(routes) }
+        { renderRoutes(route.routes) }
       </div>
     )
   }

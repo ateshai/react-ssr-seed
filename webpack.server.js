@@ -1,6 +1,7 @@
 const path = require("path");
 const webpackNodeExternals = require("webpack-node-externals");
 const ExtractCssChunks = require("extract-css-chunks-webpack-plugin");
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
 module.exports = {
   target: "node",
@@ -40,7 +41,10 @@ module.exports = {
           // reloadAll: true, // when desperation kicks in - this is a brute force HMR flag
           // cssModules: true // if you use cssModules, this can help.
         }
-      )
+      ),
+      new OptimizeCSSAssetsPlugin({
+        cssProcessor: require('cssnano'),
+      })
     ],
   externals: [webpackNodeExternals()]
 }

@@ -1,6 +1,6 @@
 const path = require("path");
 const ExtractCssChunks = require("extract-css-chunks-webpack-plugin");
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
 module.exports = {
   target: "web",
@@ -23,17 +23,7 @@ module.exports = {
           chunks: "all"
         }
       }
-    },
-    minimizer: [
-      new OptimizeCssAssetsPlugin({
-        assetNameRegExp: /\.optimize\.css$/g,
-        cssProcessor: require('cssnano'),
-        cssProcessorPluginOptions: {
-          preset: ['default', { discardComments: { removeAll: true } }],
-        },
-        canPrint: true
-      })
-    ]
+    }
   },
   module: {
     rules: [
@@ -45,9 +35,14 @@ module.exports = {
       {
         test: /\.(?:css|scss)$/,
         use: [
-           ExtractCssChunks.loader,
-           "css-loader",
-           "sass-loader"
+          ExtractCssChunks.loader,
+          "css-loader",
+          { 
+            loader: "sass-loader",
+            options:{
+              sourceMapEmbed: true
+            }
+          }
          ]
       }
     ]
@@ -64,6 +59,9 @@ module.exports = {
         // reloadAll: true, // when desperation kicks in - this is a brute force HMR flag
         // cssModules: true // if you use cssModules, this can help.
       }
-    )
+    ),
+    new OptimizeCSSAssetsPlugin({
+      cssProcessor: require('cssnano'),
+    })
   ]
 }
