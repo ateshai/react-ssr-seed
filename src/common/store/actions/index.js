@@ -1,5 +1,6 @@
 import "@babel/polyfill";
 import axios from "axios";
+import fetch from "node-fetch";
 
 // actions
 export const INCREMENT_COUNTER = "INCREMENT_COUNTER";
@@ -22,9 +23,12 @@ export const set = (value) => ({
 })
 
 export const fetchUsers = () => async dispatch => {
-  const res = await axios.get('https://jsonplaceholder.typicode.com/users');
-  dispatch({
-    type: FETCH_USERS,
-    payload: res.data
-  });
+  await fetch('http://localhost:3008/api/users').then(res => {  
+    return res.json()
+  }).then(response => {
+    dispatch({
+      type: FETCH_USERS,
+      payload: response
+    });
+  }).catch(e => console.log(e));
 };

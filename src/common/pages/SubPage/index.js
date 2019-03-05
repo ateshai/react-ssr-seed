@@ -6,7 +6,7 @@ import { fetchUsers } from "../../store/actions";
 class SubPage extends Component {
   
   componentDidMount() {
-    //this.props.fetchUsers();
+    this.props.fetchUsers();
   }
 
   render () {
