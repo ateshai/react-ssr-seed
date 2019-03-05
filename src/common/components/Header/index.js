@@ -1,17 +1,10 @@
 import React from "react";
-import { Link } from 'react-router-dom';
+import MainNavigation from "../Navigation/mainNavigation";
 
 const Header = () => {
   return (
     <div className="header">
-      <nav className="main-navigation">
-        <ul>
-          <li>
-            <Link to="/">Main Page</Link>
-            <Link to="/subpage">Sub Page</Link>
-          </li>
-        </ul>
-      </nav>
+      <MainNavigation />
     </div>
   )
 };

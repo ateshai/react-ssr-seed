@@ -1,0 +1,9 @@
+@import "../variables.scss";
+@import "../mixins.scss";
+@import "../atoms/button.scss";
+
+.header {
+  width: 100%;
+  height: 45px;
+  background: #eee;
+}

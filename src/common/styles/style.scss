@@ -1,0 +1,20 @@
+@import "./variables.scss";
+@import "./mixins.scss";
+
+body {
+  font-size:13px;
+
+  @include respond-above(sm) {
+    font-size: 16px;
+    color: #c00;
+  }
+}
+
+// components
+@import "./components/navigation.scss";
+@import "./components/header.scss";
+
+// pages
+@import "./pages/subpage.scss"
+
+

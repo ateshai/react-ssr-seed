@@ -1,3 +1,7 @@
+@import "../variables.scss";
+@import "../mixins.scss";
+@import "../atoms/button.scss";
+
 .page {
   &.sub {
     background: #ccc;
