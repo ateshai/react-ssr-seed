@@ -1,16 +1,18 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 
-const MainNavigation = () => {
+const MainNavigation = (props) => {
+
+  console.log("navigation children", props.children);
+  const navItems = props.children.map( child =>(
+    <li className="navigation__item">
+      { child }
+    </li>
+  ));
   return (
     <nav className="navigation navigation--main">
       <ul className="navigation__list">
-        <li className="navigation__item">
-          <Link className="navigation__link" to="/">Main Page</Link>
-        </li>
-        <li className="navigation__item">
-          <Link className="navigation__link" to="/subpage">Sub Page</Link>
-        </li>
+        { navItems }
       </ul>
     </nav>
   )
