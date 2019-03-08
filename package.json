@@ -6,10 +6,11 @@
   "scripts": {
     "webpack:client": "webpack --config webpack.client.js --watch",
     "webpack:server": "webpack --config webpack.server.js --watch",
-    "webpack:start": "nodemon --watch build --exec node build/bundle.js",
+    "wp:server": "webpack --config webpack.server.js",
+    "webpack:start": "nodemon --watch build --exec node build/server.js",
     "dev": "npm-run-all -p webpack:*",
     "build": "npm run clean && webpack --config webpack.client.js && webpack --config webpack.server.js",
-    "start": "node build/bundle.js",
+    "start": "node build/server.js",
     "clean": "rimraf build"
   },
   "author": "",

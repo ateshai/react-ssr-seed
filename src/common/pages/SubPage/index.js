@@ -38,3 +38,8 @@ export const loadData = (store) => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SubPage);
+
+// export default {
+//   component: connect(mapStateToProps, mapDispatchToProps)(SubPage),
+//   loadData: () =>store.dispatch(fetchUsers())
+// }; 
