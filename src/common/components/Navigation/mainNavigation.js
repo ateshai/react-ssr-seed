@@ -1,6 +1,6 @@
 import React from "react";
-import { Link } from 'react-router-dom';
 
+/** MainNavigation component description */
 const MainNavigation = (props) => {
 
   console.log("navigation children", props.children);
