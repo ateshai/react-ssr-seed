@@ -57,6 +57,7 @@
     "@storybook/addon-actions": "^5.0.1",
     "@storybook/addon-info": "^5.0.1",
     "@storybook/addon-links": "^5.0.1",
+    "@storybook/addon-viewport": "^5.0.1",
     "@storybook/cli": "^5.0.1",
     "@storybook/react": "^5.0.1",
     "babel-plugin-react-docgen": "^2.0.2",
