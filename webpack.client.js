@@ -1,6 +1,7 @@
 const path = require("path");
 const ExtractCssChunks = require("extract-css-chunks-webpack-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const ReactLoadablePlugin = require('react-loadable/webpack').ReactLoadablePlugin;
 
 module.exports = {
   target: "web",
@@ -36,14 +37,19 @@ module.exports = {
         test: /\.(?:css|scss)$/,
         use: [
           ExtractCssChunks.loader,
-          "css-loader",
+          { 
+            loader: "css-loader",
+            options:{
+              context: path.resolve(__dirname, 'context')
+            }
+          },
           { 
             loader: "sass-loader",
             options:{
               sourceMapEmbed: true
             }
           }
-         ]
+        ]
       }
     ]
   },
@@ -62,6 +68,9 @@ module.exports = {
     ),
     new OptimizeCSSAssetsPlugin({
       cssProcessor: require('cssnano'),
+    }),
+    new ReactLoadablePlugin({
+      filename: './build/react-loadable.json',
     })
   ]
 }

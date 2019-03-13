@@ -2,13 +2,14 @@ const path = require("path");
 const webpackNodeExternals = require("webpack-node-externals");
 const ExtractCssChunks = require("extract-css-chunks-webpack-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+// const ReactLoadablePlugin = require('react-loadable/webpack').ReactLoadablePlugin;
 
 module.exports = {
   target: "node",
   entry: "./src/server/index.js",
   mode: "development",
   output: {
-    filename: "bundle.js",
+    filename: "server.js",
     path: path.resolve(__dirname, "build"),
     publicPath: "/build"
   },
@@ -23,7 +24,12 @@ module.exports = {
         test: /\.(?:css|scss)$/,
         use: [
            ExtractCssChunks.loader,
-           "css-loader",
+           { 
+            loader: "css-loader",
+            options:{
+              context: path.resolve(__dirname, 'context')
+            }
+          },
            "sass-loader"
          ]
       }
@@ -44,7 +50,10 @@ module.exports = {
       ),
       new OptimizeCSSAssetsPlugin({
         cssProcessor: require('cssnano'),
-      })
+      }),
+      // new ReactLoadablePlugin({
+      //   filename: './build/react-loadable.json',
+      // })
     ],
   externals: [webpackNodeExternals()]
 }

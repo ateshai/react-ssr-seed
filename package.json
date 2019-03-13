@@ -6,11 +6,14 @@
   "scripts": {
     "webpack:client": "webpack --config webpack.client.js --watch",
     "webpack:server": "webpack --config webpack.server.js --watch",
-    "webpack:start": "nodemon --watch build --exec node build/bundle.js",
+    "wp:server": "webpack --config webpack.server.js",
+    "webpack:start": "nodemon --watch build --exec node build/server.js",
     "dev": "npm-run-all -p webpack:*",
     "build": "npm run clean && webpack --config webpack.client.js && webpack --config webpack.server.js",
-    "start": "node build/bundle.js",
-    "clean": "rimraf build"
+    "start": "node build/server.js",
+    "clean": "rimraf build",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "author": "",
   "license": "ISC",
@@ -51,6 +54,13 @@
     "webpack-node-externals": "^1.7.2"
   },
   "devDependencies": {
+    "@storybook/addon-actions": "^5.0.1",
+    "@storybook/addon-info": "^5.0.1",
+    "@storybook/addon-links": "^5.0.1",
+    "@storybook/addon-viewport": "^5.0.1",
+    "@storybook/cli": "^5.0.1",
+    "@storybook/react": "^5.0.1",
+    "babel-plugin-react-docgen": "^2.0.2",
     "cssnano": "^4.1.10",
     "extract-css-chunks-webpack-plugin": "^3.3.2",
     "nodemon": "^1.18.10",

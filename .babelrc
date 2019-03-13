@@ -5,6 +5,7 @@
   ],
   "plugins": [
     "@babel/plugin-syntax-dynamic-import",
-    "react-loadable/babel"
+    "react-loadable/babel",
+    "react-docgen"
   ]
 }
