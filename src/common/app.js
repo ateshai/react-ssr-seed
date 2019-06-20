@@ -4,6 +4,8 @@ import { renderRoutes } from "react-router-config";
 
 import "./styles/style.scss";
 
+console.log("env", process.env.NODE_ENV);
+
 class App extends Component {
   constructor (props, context) {
     super(props, context);
