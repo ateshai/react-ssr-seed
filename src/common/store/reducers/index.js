@@ -16,11 +16,18 @@ const counter = (state = 0, action) => {
 
 const users = (state = [], action) => {
   switch (action.type) {
-    case FETCH_USERS:
-      return action.payload;
+    case "FETCH_USERS_PENDING":
+      console.log('here', action);
+      return { ...state, loading: true };
+    case "FETCH_USERS_FULFILLED":
+      console.log('here2 ');
+      return { ...state, loading: false, users: action.payload };
+    case "FETCH_USERS_REJECTED": {
+      return { ...state, loading: false, error: action.payload, }
+    } 
     default:
       return state;
-  };
+  }
 };
 
 export default combineReducers({
