@@ -10,13 +10,27 @@ class SubPage extends Component {
   }
 
   render () {
+    const {users} = this.props;
+    console.log("this.props.users", users);
+
+    let usersList = <li>henuz kullanıcı yok</li>;
+    
+    if (!users.users && users.loading) {
+      usersList = <li>yukleniyor!...</li>;
+    } else if (users.users && users.users.length) {
+      usersList = users.users.map( user => {
+        console.log("user", user);
+        return <li key={ user.id }>{user.name} </li>;
+      });
+    }
+
     return (
       <div className="page sub">
         <Header />
         <h2>Sub Page</h2>
         <button className="subPageBtn">Stres Tuşu</button>
         <ul>
-          { this.props.users.map( user => (<li key={ user.id }>{user.name} </li>) ) }
+          { usersList }
         </ul>
       </div>
     )

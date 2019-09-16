@@ -1,5 +1,5 @@
 import "@babel/polyfill";
-import axios from "axios";
+// import axios from "axios";
 import fetch from "node-fetch";
 
 // actions
@@ -22,13 +22,9 @@ export const set = (value) => ({
   value
 })
 
-export const fetchUsers = () => async dispatch => {
-  await fetch('http://localhost:3008/api/users').then(res => {  
-    return res.json()
-  }).then(response => {
-    dispatch({
-      type: FETCH_USERS,
-      payload: response
-    });
-  }).catch(e => console.log(e));
+export const fetchUsers = () => {
+  return {
+    type: FETCH_USERS,
+    payload: Promise.resolve(fetch('http://localhost:3008/api/users').then(res => res.json()))
+  }
 };
