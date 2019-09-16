@@ -4,8 +4,8 @@ import React from "react";
 const MainNavigation = (props) => {
 
   console.log("navigation children", props.children);
-  const navItems = props.children.map( child =>(
-    <li className="navigation__item">
+  const navItems = props.children.map( (child, i) => (
+    <li className="navigation__item" key={i}>
       { child }
     </li>
   ));
